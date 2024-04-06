@@ -29,9 +29,14 @@ variable "cloudflare_zone_ids" {
       port    = 80,      # Example port for the root domain
       subdomains = [
         {
-          name    = "python-development-environment",
-          service = "python-development-environment",
-          port    = 8000
+          name    = "kasm",
+          service = "kasm",
+          port    = 443
+        },
+        {
+          name    = "kasm",
+          service = "kasm-wizard",
+          port    = 3000
         }
       ],
       include_root = false,

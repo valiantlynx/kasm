@@ -1,7 +1,7 @@
-docker build -t python-development-environment-image .
-docker run --name python-development-environment-container -d -p 8000:8000 -v $(pwd):/code python-development-environment-image
+docker build -t kasm-image .
+docker run --name kasm-container -d -p 8000:8000 -v $(pwd):/code kasm-image
 
 #connect to turborepo
-git subtree add --prefix=apps/python-development-environment https://github.com/valiantlynx/python-development-environment.git main --squash
-git subtree pull --prefix=apps/python-development-environment https://github.com/valiantlynx/python-development-environment.git main --squash
-git subtree push --prefix=apps/python-development-environment https://github.com/valiantlynx/python-development-environment.git main
+git subtree add --prefix=apps/kasm https://github.com/valiantlynx/kasm.git main --squash
+git subtree pull --prefix=apps/kasm https://github.com/valiantlynx/kasm.git main --squash
+git subtree push --prefix=apps/kasm https://github.com/valiantlynx/kasm.git main

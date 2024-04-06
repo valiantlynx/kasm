@@ -2,13 +2,24 @@
 version: '3.8'
 
 services:
-  python-development-environment:
-    image: valiantlynx/python-development-environment:latest
-    container_name: python-development-environment
-    restart: always
+  kasm:
+    image: lscr.io/linuxserver/kasm:latest
+    container_name: kasm
+    privileged: true
+    environment:
+      - KASM_PORT=443
+      - DOCKER_HUB_USERNAME={{docker_hub_username}} #optional
+      - DOCKER_HUB_PASSWORD={{docker_hub_password}} #optional
+      - DOCKER_MTU=1500 #optional
+    volumes:
+      - /path/to/data:/opt
+      - /path/to/profiles:/profiles #optional
+      - /dev/input:/dev/input #optional
+      - /run/udev/data:/run/udev/data #optional
     ports:
-      - 8000:8000
-      - 5678:5678
+      - 3000:3000
+      - 443:443
+    restart: unless-stopped
     networks:
       - monitoring
 
@@ -24,7 +35,7 @@ services:
       - ./certbot/logs:/var/log/letsencrypt
       - ./certbot/www:/var/www/certbot
     depends_on:
-      - python-development-environment
+      - kasm
     restart: unless-stopped
     networks:
       - monitoring  
