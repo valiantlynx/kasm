@@ -34,8 +34,8 @@ variable "cloudflare_zone_ids" {
           port    = 443
         },
         {
-          name    = "kasm",
-          service = "kasm-wizard",
+          name    = "kasm-wizard",
+          service = "kasm",
           port    = 3000
         }
       ],
