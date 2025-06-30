@@ -5,12 +5,9 @@ services:
     container_name: kasm
     privileged: true
     security_opt:
-      - apparmor:rootlesskit #optional
+      - apparmor:rootlesskit #optiona
     environment:
-      - KASM_PORT=9033
-      - DOCKER_HUB_USERNAME=USER #optional
-      - DOCKER_HUB_PASSWORD=PASS #optional
-      - DOCKER_MTU=1500 #optional
+      - ALLOW_INSECURE_HTTP=true
     volumes:
       - ./kasm/data:/opt
       - ./kasm/profiles:/profiles #optional
